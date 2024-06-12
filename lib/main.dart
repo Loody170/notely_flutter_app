@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Notely',
-      theme: ThemeData(
+      theme: ThemeData(  
         appBarTheme: AppBarTheme(
           backgroundColor: whiteColor,
         ),

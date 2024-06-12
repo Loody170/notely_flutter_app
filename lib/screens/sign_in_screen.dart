@@ -33,7 +33,7 @@ class SignInScreen extends HookWidget {
     void signIn() async {
       try {
         var result = await signInUserHTTP(emailController.text, passwordController.text);
-        if (result.isNotEmpty) {
+        if (result['access_token'] != null) {
           showToast("Signed in successfully!", Colors.green);
 
           // Clear the text fields

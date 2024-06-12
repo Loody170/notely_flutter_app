@@ -27,7 +27,6 @@ class NoteBlock extends StatelessWidget {
         children: [
           Text(
             title,
-            textAlign: TextAlign.center, 
             style: GoogleFonts.inter(
               fontSize: 16.03,
               fontWeight: FontWeight.w600,
@@ -38,7 +37,6 @@ class NoteBlock extends StatelessWidget {
           Flexible(
             child: Text(
               text,
-              textAlign: TextAlign.center, 
               style: GoogleFonts.poppins(
                 fontSize: 12.0,
                 fontWeight: FontWeight.w500,

@@ -1,18 +1,20 @@
 import 'dart:convert';
+// import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logging/logging.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 final Logger logger = Logger('UserUtilLogger');
-
 
 Future<Map<String, dynamic>> signInUserHTTP(
     String email, String password) async {
   var dio = Dio();
   var headers = {
-    'apikey': dotenv.env['API_KEY'],
-    'Authorization': '${dotenv.env['AUTHORIZATION']}',
+    // 'apikey': dotenv.env['API_KEY'],
+    // 'Authorization': '${dotenv.env['AUTHORIZATION']}',
+    'apikey': const String.fromEnvironment('API_KEY'),
+    'Authorization': const String.fromEnvironment('AUTHORIZATION'),
     'Content-Type': 'application/json',
   };
   var data = json.encode({"email": email, "password": password});
@@ -34,11 +36,11 @@ Future<Map<String, dynamic>> signInUserHTTP(
     } else {
       logger.info(response.statusCode);
       logger.info(response.statusMessage);
-      return {};
+      return {"response": response.statusMessage};
     }
   } catch (e) {
     logger.info(e);
-    return {};
+    return {"error": e};
   }
 }
 

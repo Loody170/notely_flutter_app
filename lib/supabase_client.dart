@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logging/logging.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class SupabaseClient {
   final Logger _logger = Logger('SupabaseClientLogger');
@@ -11,8 +11,10 @@ class SupabaseClient {
 
   SupabaseClient() {
     _dio.options.baseUrl = baseUrl;
-    _dio.options.headers['apikey'] = dotenv.env['API_KEY'];
-    _dio.options.headers['Authorization'] = dotenv.env['AUTHORIZATION'];
+    // _dio.options.headers['apikey'] = dotenv.env['API_KEY'];
+    // _dio.options.headers['Authorization'] = dotenv.env['AUTHORIZATION'];
+    _dio.options.headers['apikey'] = const String.fromEnvironment('API_KEY');
+    _dio.options.headers['Authorization'] = const String.fromEnvironment('AUTHORIZATION');
     _dio.options.headers['Content-Type'] = 'application/json';
   }
 
