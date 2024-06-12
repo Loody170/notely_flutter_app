@@ -179,12 +179,6 @@ class NotesHomeScreen extends HookWidget {
           width: 26,
           height: 26,
         )
-        // const Icon(
-        //   Icons.add,
-        //   size: 40,
-          
-        //   color: Colors.white,
-        // ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     ).animate().slideX(duration: 400.ms, begin: -1);

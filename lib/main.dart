@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
     Future<bool> isAuthenticated = checkAuth();
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Notely',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
