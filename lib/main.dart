@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             return const Center(
                 child: CircularProgressIndicator(
               color: Color.fromRGBO(232, 80, 91, 1),
-            )); // Or any other placeholder widget
+            )); 
           } else if (snapshot.hasData && snapshot.data == true) {
             // isAuthenticated is true
             _logger.info("User is authenticated");
