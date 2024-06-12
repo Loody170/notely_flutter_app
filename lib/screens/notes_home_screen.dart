@@ -173,11 +173,18 @@ class NotesHomeScreen extends HookWidget {
           borderRadius: BorderRadius.all(Radius.circular(30)),
         ),
         materialTapTargetSize: MaterialTapTargetSize.padded,
-        child: const Icon(
-          Icons.add,
-          size: 40,
-          color: Colors.white,
-        ),
+        child: 
+        Image.asset(
+          "assets/plus_positive.png",
+          width: 26,
+          height: 26,
+        )
+        // const Icon(
+        //   Icons.add,
+        //   size: 40,
+          
+        //   color: Colors.white,
+        // ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     ).animate().slideX(duration: 400.ms, begin: -1);

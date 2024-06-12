@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NoteBlock extends StatelessWidget {
   final String title;
@@ -21,22 +22,27 @@ class NoteBlock extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center, 
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
+            textAlign: TextAlign.center, 
+            style: GoogleFonts.inter(
+              fontSize: 16.03,
+              fontWeight: FontWeight.w600,
+              color: const Color.fromRGBO(100, 100, 100, 1),
             ),
           ),
           const SizedBox(height: 8.0),
           Flexible(
             child: Text(
               text,
-              style: const TextStyle(
-                fontSize: 14.0,
+              textAlign: TextAlign.center, 
+              style: GoogleFonts.poppins(
+                fontSize: 12.0,
+                fontWeight: FontWeight.w500,
+                color: const Color.fromRGBO(129, 129, 129, 1),
               ),
             ),
           ),

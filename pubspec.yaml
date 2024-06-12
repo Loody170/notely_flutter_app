@@ -73,6 +73,7 @@ flutter:
   assets:
     - assets/Group821.png
     - assets/searchnormal1.png
+    - assets/plus_positive.png
     - .env
     
   # An image asset can refer to one or more resolution-specific "variants", see
