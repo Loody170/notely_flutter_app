@@ -37,11 +37,22 @@ class NotesHomeScreen extends HookWidget {
         context, MaterialPageRoute(builder: (context) => const SignInScreen()));
   }
 
+  List<dynamic> filterNotes(List<dynamic> notes, String query) {
+    return notes.where((note) {
+      return note['title']
+          .toString()
+          .toLowerCase()
+          .contains(query.toLowerCase());
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     final userNotes = useState<List<dynamic>>([]);
+    final filteredUserNotes = useState<List<dynamic>>([]);
     final userId = useState<String>("");
     final refreshNeeded = useState(false);
+    final searchQuery = useState<String>("");
 
     Future<void> fetchNotes() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -51,7 +62,7 @@ class NotesHomeScreen extends HookWidget {
         final notes = await SupabaseClient().fetchUserNote("notes", id);
         userNotes.value = notes;
       } else {
-        if(context.mounted){
+        if (context.mounted) {
           navigateToSignIn(context);
         }
       }
@@ -78,8 +89,8 @@ class NotesHomeScreen extends HookWidget {
         if (id != null) {
           userId.value = id;
         } else {
-          if(context.mounted){
-          navigateToSignIn(context);
+          if (context.mounted) {
+            navigateToSignIn(context);
           }
         }
       }
@@ -119,13 +130,25 @@ class NotesHomeScreen extends HookWidget {
                 filled: true,
                 fillColor: const Color.fromRGBO(240, 240, 240, 1),
               ),
+              onChanged: (value) {
+                if (value.isNotEmpty) {
+                  searchQuery.value = value;
+                  _logger.info("Search query: $value");
+                  filteredUserNotes.value = filterNotes(userNotes.value, value);
+                } else {
+                  _logger.info("Search query is empty");
+                  searchQuery.value = "";
+                }
+              },
             ),
           ),
           Expanded(
               child: userNotes.value.isEmpty
                   ? const Center(child: Text("No notes found"))
                   : NotesGridView(
-                      userNotes: userNotes,
+                      userNotes: searchQuery.value.isEmpty
+                          ? userNotes
+                          : filteredUserNotes,
                       onNoteEdit: () => refreshNeeded.value = true)),
         ],
       ),

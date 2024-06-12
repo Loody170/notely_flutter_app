@@ -71,7 +71,7 @@ class NotesGridView extends StatelessWidget {
               ),
             );
           },
-          staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+          staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
         );
       },
     );
